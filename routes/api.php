@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Route::prefix('gallery')->group(function () { 
+//     Route::post('/upload', [PostController::class, 'upload_image'])->name('api.gallery.upload');
+    // Route::put('/uploads', [PostController::class, 'upload_images'])->name('api.gallery.uploads');
+// });
+

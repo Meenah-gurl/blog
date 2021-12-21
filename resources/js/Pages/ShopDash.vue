@@ -2,12 +2,12 @@
    <app-layout title="Dashboard">
        <div class="py-12">
             <div class="mx-auto sm:px-6 lg:px-5 py-6">
-                <form @submit.prevent="addImages()" enctype="multipart/form-data">
+                <form @submit.prevent="addShop()" enctype="multipart/form-data">
                     <div class="overflow-hidden grid md:grid-cols-2 grid-cols-1 gap-5">
                         <!-- first grid -->
                         <div class="bg-white shadow-md  py-3 px-3 rounded-lg">
                             <div class="text-lg text-gray-900 font-semibold mb-3">
-                                Add Lace Styles
+                                Add Item for Sale
                             </div>
                             
                             <div class="mb-4">
@@ -17,26 +17,17 @@
                                 </div>
                             </div>
                             
-                            <div class="mb-4">
-                                <label for="" class="mb-3 font-semibold text-gray-900 text-lg">Style Type</label>
-                                <div class="bg-white rounded-lg py-2 px-2 shadow-lg mt-4">
-                                    <select v-model="style" class="w-full outline-none border-none">
-                                        <option value="" selected disabled>Select Category</option>
-                                        <option value="Lace">Lace</option>
-                                        <option value="Ankara">Ankara</option>
-                                        <option value="Children">Children</option>
-                                        <option value="Asoebi">Asoebi</option>
-                                        <option value="Trends">Trends</option>
-                                        <option value="Makeover">Makeover</option>
-                                        <option value="Advert">Advert</option>
-                                        <option value="HairStyles">HairStyles</option>
-                                    </select>
-                                </div>
-                            </div>
                             <div>
                                 <label for="" class="mb-3 font-semibold text-gray-900 text-lg">Description</label>
                                 <div class="py-2 mt-1">
                                    <textarea v-model="description" rows="3" class="w-full"></textarea>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="" class="mb-3 font-semibold text-gray-900 text-lg">Price</label>
+                                <div class="py-2 mt-1">
+                                  <input type="text" class="bg-white text-gray-900 rounded-lg py-2 px-2 shadow-lg border-none w-full" v-model="price" placeholder="Enter fixed amount">
                                 </div>
                             </div>
                                 
@@ -79,27 +70,27 @@
             return{
                 image: '',
                 description: '',
-                style: '',
+                price: '',
             }
         },
 
         methods: {
-            addImages(){
+            addShop(){
                 const config = { headers: { 'content-type': 'multipart/form-data' }}
                 let data = new FormData();
                 data.append('image', this.image);
                 data.append('description', this.description);
-                data.append('style', this.style);
+                data.append('price', this.price);
 
                 // axios.post(route('api.add_book'), data, config)
-                axios.post(route('add.gallery'), data, config)
+                axios.post(route('add.shop'), data, config)
                 .then((res) => {
                     alert('Saved')
                     if (res.data.status == 'success') {
                         alert(res.data.msg)
                         this.description ='';
                         this.image ='';
-                        this.style ='';
+                        this.price = '';
                      } else {
                         alert(res.data.msg)
                     }

@@ -124,3 +124,31 @@
     </div>
 </template>
 
+<script>
+export default {
+    components:{
+
+    },
+
+    props:{
+         gallery_home:Array,
+    },
+
+     beforeMount() {
+        this.fetchStyles()
+    },
+    methods: {
+        fetchStyles(){
+            axios.post(route('fetch_styles'))
+            .then((res) => {
+                this.childrenstyle = res.data.childrenStyle;
+                this.trend = res.data.trend;
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }
+    },
+}
+</script>
+

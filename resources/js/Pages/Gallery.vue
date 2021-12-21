@@ -1,114 +1,59 @@
 <template>
-  <div class="py-12">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4">
-      <div class="grid grid-cols-2 gap-5">
-        <div>
-          <form @submit.prevent="addImage" enctype="multipart/form-data">
-            <div class="mb-3">
-              <label for>Single Image</label>
-            </div>
-            <div class="mb-3">
-              <input
-                type="file"
-                @input="form.image = $event.target.files[0]"
-                @change="previewImage"
-              />
-            </div>
-
-            <div>
-              <div
-                class="bg-white overflow-hidden shadow-xl sm:rounded-lg inline-block"
-                v-for="(imgsrc, i) in ImagesBinary"
-                :key="i"
-              >
-                <img :src="imgsrc" alt class="h-12 w-12 inline-block" />
+   <app-layout title="Dashboard">
+       <div class="py-12 px-5">
+          <div class="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-4 py-3">
+            <!-- first grid -->
+            <div class="bg-white rounded-lg shadow-lg px-3 py-3 mx-auto" v-for="(item, i) in gallery " :key="i">
+              <div class="mx-auto mb-3">
+                  <img :src="'/storage/categories/images/' + item.image" alt="" class="rounded-lg shadow-sm h-60 w-full mx-auto">
+              </div>
+              <div class="flex gap-4">
+                  <div class="md:mx-auto flex-grow">
+                      <p>{{ item.style }}</p>
+                  </div>
+                  <div class="flex-initial flex-shrink-0"> 
+                      <button type="submit" class="bg-red-500 text-gray-100 rounded-lg px-2" @click="deleteImg(item.id)">Delete</button>
+                  </div>
               </div>
             </div>
-
-            <div class="mb-3">
-              <button>Submit</button>
-            </div>
-          </form>
+          </div>
+               
         </div>
-      </div>
-    </div>
-  </div>
+   </app-layout>
 </template>
-<script>
-    import { defineComponent } from 'vue'
-    import AppLayout from '@/Layouts/AppLayout.vue'
-    import Welcome from '@/Jetstream/Welcome.vue'
-    import axios from 'axios'
 
-    export default defineComponent({
+
+<script>
+    import AppLayout from '@/Layouts/AppLayout.vue'
+   
+    export default {
         components: {
             AppLayout,
-            Welcome,
         },
-        props:{
-            user:Array,
-            gallery:Array
+        props: {
+        user: Object,
+        gallery: Array,
         },
-        mounted(){
-
-        },
-        data(){
-            return {
-                form : this.$inertia.form({
-                    image : '',
-                }),
-                form2 : this.$inertia.form({
-                    images : [],
-                    _method: 'put',
-                }),
-                ImagesBinary: [],
-                ImagesBinarys: [],
-            }
-        },
-        methods:{
-            addImage(){
-                let data = new FormData();
-                data.append('image', this.form.image)
-                axios.post(route('api.gallery.upload'), data)
-                .then(res => {
-                    console.log(res.data);
-                })
-            },
-            addImages(){
-                // let data = new FormData();
-                // this.form2.images.forEach((image, i) => {
-                //     data.append('images[' + i + ']', image)
-                // });
-
-                // console.log(this.form2);
-                // axios.put(route('api.gallery.uploads'), data)
-                // .then(res => {
-                //     console.log(res.data);
-                // })
-
-                // Fake Images Upload
-                this.form2.images.forEach((image, i) => {
-                    let data = new FormData();
-                    data.append('image', image)
-                    axios.post(route('api.gallery.upload'), data)
-                    .then(res => {
-                        this.$inertia.visit('');
+        methods: {
+            deleteImg(id){
+               if(confirm('Are you sure you want to delete this image')){
+                   axios.post(route('delete_img'), {id: id})
+                    .then((res) => {
+                        alert('Success');
+                        window.location.reload()
                     })
-                    .catch(err => {
-                        // err.response.data
-                    })
-                });
+                    .catch((error) => {
+                        this.handleError(error);
+                    });
+               }else{
+                   alert('Keep Image')
+               }
             },
-            previewImage(e){
-                // Single Image
-                let file = e.target.files[0];
-                let reader = new FileReader();
-                reader.onload = (r_ev) => {
-                    this.ImagesBinary.push(r_ev.target.result)
-                }
-                reader.readAsDataURL(file);
-            },
+            handleError(errorsObj){
+                alert( 'An Unexpected Error Occured!');
+            }, 
             
-        }
-    })
+        },
+       
+    }
 </script>

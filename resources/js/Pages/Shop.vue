@@ -4,69 +4,15 @@
             <h1 class="lg:text-4xl text-3xl text-white font-san font-extrabold">Welcome to our Shop!</h1>
             <hr class="border-blue-600 w-20 mx-auto border-2 mt-2">
         </div>
-        <div class="mt-7 mx-auto py-7 max-w-6xl ">
+        <div class="mt-7 mx-auto py-7 max-w-6xl">
           <Splide :options="options1">
-            <SplideSlide>
-                <img src="/imgs/shortgown.jpg" alt="Sample 1" class="imgs w-full" />
-                <div class="text-white font-san text-center block">
-                    <span class="block">Butterfly Gown</span>
-                    <small>5000</small>
+            <SplideSlide v-for="(SalesItem, i) in shop" :key="i">
+                <div class="items-center mb-9">
+                    <img :src="'/storage/shop/images/' + SalesItem.image" alt="Sample 1" class="imgs w-full h-80" />
                 </div>
-            </SplideSlide>
-
-            <SplideSlide>
-                <img src="/imgs/shortgown.jpg" alt="Sample 2" class="imgs w-full" />
                 <div class="text-white font-san text-center block">
-                    <span class="block">Butterfly Gown</span>
-                    <small>5000</small>
-                </div>
-            </SplideSlide>
-
-            <SplideSlide>
-                <img src="/imgs/shortgown.jpg" alt="Sample 2" class="imgs w-full" />
-                <div class="text-white font-san text-center block">
-                    <span class="block">Butterfly Gown</span>
-                    <small>5000</small>
-                </div>
-            </SplideSlide>
-
-            <SplideSlide>
-                <img src="/imgs/shortgown.jpg" alt="Sample 2" class="imgs w-full" />
-                <div class="text-white font-san text-center block">
-                    <span class="block">Butterfly Gown</span>
-                    <small>5000</small>
-                </div>
-            </SplideSlide>
-
-            <SplideSlide>
-                <img src="/imgs/shortgown.jpg" alt="Sample 2" class="imgs w-full" />
-                <div class="text-white font-san text-center block">
-                    <span class="block">Butterfly Gown</span>
-                    <small>5000</small>
-                </div>
-            </SplideSlide>
-
-            <SplideSlide>
-                <img src="/imgs/shortgown.jpg" alt="Sample 2" class="imgs w-full" />
-                <div class="text-white font-san text-center block">
-                    <span class="block">Butterfly Gown</span>
-                    <small>5000</small>
-                </div>
-            </SplideSlide>
-
-            <SplideSlide>
-                <img src="/imgs/shortgown.jpg" alt="Sample 2" class="imgs w-full" />
-                <div class="text-white font-san text-center block">
-                    <span class="block">Butterfly Gown</span>
-                    <small>5000</small>
-                </div>
-            </SplideSlide>
-
-            <SplideSlide>
-                <img src="/imgs/shortgown.jpg" alt="Sample 2" class="imgs w-full" />
-                <div class="text-white font-san text-center block">
-                    <span class="block">Butterfly Gown</span>
-                    <small>5000</small>
+                    <span class="block">{{ SalesItem.description }}</span>
+                    <small class="text-md font-semibold">&#8358;{{ SalesItem.price }}</small>
                 </div>
             </SplideSlide>
         </Splide>
@@ -81,8 +27,12 @@ import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 
 export default {
   components: {  Splide, SplideSlide },
+    props:{
+        salesItems:Array,
+    },
   data() {
     return {
+        shop: [],
         options1: {
             rewind: true,
             gap: "1rem",
@@ -109,7 +59,21 @@ export default {
             },
         }
     }
-  }
+  },
+    beforeMount() {
+        this.fetchStyleShop()
+    },
+   methods: {
+        fetchStyleShop(){
+            axios.post(route('fetch_styles_shop'))
+            .then((res) => {
+                this.shop = res.data.shop;
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }
+    },
 };
 </script>
 

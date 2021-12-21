@@ -1,4 +1,5 @@
 <template>
+    <Head title="Contact Page" />
     <web-layout>
         <div class="w-full lg:py-10 py-3 relative max-w-4xl mx-auto mt-10 lg:px-0 px-10">
             <div class="mx-auto bg-blue-900 rounded-md lg:py-28 py-8 shadow-2xl md:px-10 px-4">
@@ -62,8 +63,9 @@
 
 <script>
 import WebLayout from '../Layouts/WebLayout.vue'
+import {Head} from "@inertiajs/inertia-vue3";
     export default {
-        components: { WebLayout },
+        components: { WebLayout, Head },
             
     }
 </script>

@@ -6,12 +6,12 @@
             </center>
 
             <div  class="grid md:grid-cols-5 grid-cols-2 gap-4  py-7 px-4">
-                <div class="space-y-4" v-for="(asoebiStyle, i) in 10 " :key="i">
+                <div class="space-y-4" v-for="(item, i) in asoebiStyle " :key="i">
                     <div class="hover:translate-y-1">
-                        <img src="/imgs/white.jpg" alt="" class="rounded-lg w-60">
+                        <img :src="'/storage/categories/images/' + item.image" alt="" class="rounded-lg w-60">
                     </div>
                     <div class="mt-5">
-                        <p class="text-gray-800 text-md font-semibold capitalize ">white palazzo pants for ladies</p>
+                        <p class="text-gray-800 text-md font-semibold capitalize ">{{ item.description }}</p>
                     </div>
                 </div>
             </div>

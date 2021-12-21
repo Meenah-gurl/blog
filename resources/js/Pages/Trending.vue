@@ -1,4 +1,5 @@
 <template>
+    <Head title="Trending Page" />
     <web-layout>
         <div class="py-6 px-3">
             <center class="px-3 py-1 rounded-lg shadow-lg bg-gradient-to-br from-blue-600 via-blue-400 to-blue-500 max-w-2xl mx-auto">
@@ -6,12 +7,12 @@
             </center>
 
             <div  class="grid md:grid-cols-5 grid-cols-2 gap-4  py-7 px-4">
-                <div class="space-y-4" v-for="(trends, i) in 10 " :key="i">
+                <div class="space-y-4" v-for="(item, i) in trends " :key="i">
                     <div class="hover:translate-y-1">
-                        <img src="/imgs/white.jpg" alt="" class="rounded-lg w-60">
+                        <img :src="'/storage/categories/images/' + item.image" alt="" class="rounded-lg w-60">
                     </div>
                     <div class="mt-5">
-                        <p class="text-gray-800 text-md font-semibold capitalize ">white palazzo pants for ladies</p>
+                        <p class="text-gray-800 text-md font-semibold capitalize ">{{ item.description }}</p>
                     </div>
                 </div>
             </div>
@@ -21,8 +22,9 @@
 
 <script>
     import WebLayout from "../Layouts/WebLayout.vue";
+    import {Head} from "@inertiajs/inertia-vue3";
     export default {
-        components: { WebLayout},
+        components: { WebLayout, Head},
 
         props:{
             trends:Array

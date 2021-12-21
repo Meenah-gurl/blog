@@ -1,80 +1,63 @@
 <template>
-    <div class="mt-5 h-full">
-          <div class="rounded-r-lg  bg-gray-100 py-4 px-3">
+    <div class="">
+          <div class=" bg-white py-4 px-3">
             <div>
               <div class="inline-block mb-6 mt-3">
               <div class="inline-block rounded-sm text-white bg-blue-700 w-5 text-center py-2 px-1"></div>
-              <div class="inline-block ml-3">Mina</div>
+              <div class="inline-block ml-3">Mimi Stiches</div>
             </div>
-            <div class="bg-gray-400 rounded-lg py-2 px-2 mb-4">njxdcjdnkjds</div>
+            <div class="bg-blue-100 text-gray-600 rounded-lg py-2 px-2 mb-4">njxdcjdnkjds</div>
 
             <ul>
               <li>
-                <Link
-                  class="px-4 py-2 block border-b border-gray-200 active"
-                  :href="route('dashboard')">
-                  <font-awesome
-                    :icon="['fas', 'tachometer-alt']"
-                    class="text-blue-700 hover:text-blue-800 mr-3 inline-block align-middle"/>
+                <Link class="px-4 py-2 block border-b border-gray-200 hover:bg-blue-100 hover:shadow-inner rounded" :href="route('dashboard')">
+                  <font-awesome :icon="['fas', 'tachometer-alt']" class="text-blue-700 hover:text-blue-800 mr-3 inline-block align-middle"/>
                   <span class="inline-block align-middle text-gray-600 font-medium">Dashboard</span>
                 </Link>
               </li>
 
               <li>
-                <Link
-                  class="px-4 py-2 block border-b border-gray-200 "
-                  :href="route('dashboard')">
-                  <font-awesome
-                    icon="plus"
-                    class="text-blue-700 hover:text-blue-800 mr-3 inline-block align-middle"/>
+                <Link class="px-4 py-2 block border-b border-gray-200 hover:bg-blue-100 hover:shadow-inner rounded " :href="route('categories')">
+                  <font-awesome icon="layer-group" class="text-blue-700 hover:text-blue-800 mr-3 inline-block align-middle"/>
                   <span class="inline-block align-middle text-gray-600 font-medium">Categories</span>
                 </Link>
               </li>
 
               <li>
-                <Link
-                  class="px-4 py-2 block border-b border-gray-200"
-                  :href="route('dashboard')">
-                  <font-awesome
-                    icon="plus"
-                    class="text-blue-700 hover:text-blue-800 mr-3 inline-block align-middle"/>
-                  <span class="inline-block align-middle text-gray-600 font-medium">Add post</span>
+                <Link class="px-4 py-2 block border-b border-gray-200 hover:bg-blue-100 hover:shadow-inner rounded" :href="route('advert')">
+                  <font-awesome icon="plus" class="text-blue-700 hover:text-blue-800 mr-3 inline-block align-middle"/>
+                  <span class="inline-block align-middle text-gray-600 font-medium">Advert</span>
                 </Link>
               </li>
 
               <li>
-                <Link
-                  class="px-4 py-2 block border-b border-gray-200"
-                  :href="route('dashboard')">
-                  <font-awesome
-                    icon="tachometer-alt"
-                    class="text-blue-700 hover:text-blue-800 mr-3 inline-block align-middle"/>
-                  <span class="inline-block align-middle text-gray-600 font-medium">Published</span>
+                <Link class="px-4 py-2 block border-b border-gray-200 hover:bg-blue-100 hover:shadow-inner rounded" :href="route('gallery')">
+                  <font-awesome icon="images" class="text-blue-700 hover:text-blue-800 mr-3 inline-block align-middle"/>
+                  <span class="inline-block align-middle text-gray-600 font-medium">Gallery</span>
                 </Link>
               </li>
 
               <li>
-                <Link
-                  class="px-4 py-2 block border-b border-gray-200"
-                  :href="route('dashboard')">
-                  <font-awesome
-                    icon="tachometer-alt"
-                    class="text-blue-700 hover:text-blue-800 mr-3 inline-block align-middle"/>
-                  <span class="inline-block align-middle text-gray-600 font-medium">Published</span>
+                <Link class="px-4 py-2 block border-b border-gray-200 hover:bg-blue-100 hover:shadow-inner rounded" :href="route('shopDash')">
+                  <font-awesome icon="store" class="text-blue-700 hover:text-blue-800 mr-3 inline-block align-middle"/>
+                  <span class="inline-block align-middle text-gray-600 font-medium">Shop</span>
                 </Link>
               </li>
             </ul>
           </div>
 
           <!--User profile-->
-          <div class="py-12 px-2 rounded-2xl mt-5 bg-blue-700 shadow-2xl h-60">
+          <div class="py-12 px-2 rounded-2xl mt-12 bg-blue-100 shadow-2xl h-60 relative bottom-6">
             <div class="rounded-full bg-white w-16 h-16 mx-auto text-center">
-              <img :src="user.profile_photo_path" alt class="rounded-full w-16 h-16" />
+              <!-- <img :src="user.profile_photo_path" alt class="rounded-full w-16 h-16" /> -->
             </div>
-            <p class="capitalize text-center text-white">{{ user.firstname }} {{ user.lastname }}</p>
-            <p class="text-center text-white">{{ user.level }}</p>
+            <p class="capitalize text-center text-gray-900">{{ user.firstname }} {{ user.lastname }}</p>
+            <p class="text-center text-gray-900">{{ user.level }}</p>
+            <div class="absolute top-3 left-52">
+              <font-awesome icon="bell" class=" text-blue-700 hover:text-blue-800 mr-3 text-center"/>
+            </div>
   
-            <div class="mt-7 cursor-pointer inline-block">
+            <div class="mt-5 cursor-pointer inline-block">
               <div
                 class="rounded-lg text-gray-700 inline-block bg-white px-2 py-1 text-xs shadow-lg  hover:bg-blue-600 hover:text-white"
                   @click="displayModal()">Upload Image

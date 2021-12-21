@@ -3,48 +3,62 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
+use App\Models\gallery;
+use App\Models\advert;
+use App\Models\shop;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Home');
+        $getgallery = gallery::orderBy('id','DESC')->get();
+        $getStore = shop::orderBy('id', 'DESC')->get();
+        return Inertia::render('Home',['gallery_home'=>  $getgallery], ['salesItems'=>  $getStore]);
+        // return Inertia::render('Home');
     }
 
     public function trend()
     {
-        return Inertia::render('Trending');
+        $gettrend = gallery::where('style','Trends')->orderBy('id','DESC')->get();
+        return Inertia::render('Trending',['trends'=>  $gettrend]);
     }
 
     public function laceStyle()
     {
-        return Inertia::render('LaceStyle');
+        $getlaceStyle = gallery::where('style','Lace')->orderBy('id','DESC')->get();
+        return Inertia::render('LaceStyle',['laceStyle'=> $getlaceStyle]);
     }
 
     public function asoebiStyle()
     {
-        return Inertia::render('AsoebiStyle');
+        $getasoebiStyle = gallery::where('style','Asoebi')->orderBy('id','DESC')->get();
+        return Inertia::render('AsoebiStyle',['asoebiStyle'=> $getasoebiStyle]);
     }
 
     public function ankaraStyle()
     {
-        return Inertia::render('AnkaraStyle');
+        $getankaraStyle = gallery::where('style','Ankara')->orderBy('id','DESC')->get();
+        return Inertia::render('AnkaraStyle',['ankaraStyle'=> $getankaraStyle]);
     }
 
     public function childrenStyle()
     {
-        return Inertia::render('ChildrenStyle');
+        // $getChildrenStyle = gallery::orderBy('id','DESC')->get();
+        $getChildrenStyle = gallery::where('style','Children')->orderBy('id','DESC')->get();
+        return Inertia::render('ChildrenStyle',['childrenStyle'=>$getChildrenStyle]);
     }
 
     public function hairStyle()
     {
-        return Inertia::render('HairStyle');
+        $gethairStyle = gallery::where('style','HairStyles')->orderBy('id','DESC')->get();
+        return Inertia::render('HairStyle',['hairStyle'=> $gethairStyle]);
     }
 
     public function makeover()
     {
-        return Inertia::render('MakeOver');
+        $getmakeover = gallery::where('style','Makeover')->orderBy('id','DESC')->get();
+        return Inertia::render('MakeOver',['makeover'=> $getmakeover]);
     }
 
     public function aboutPage()
@@ -57,6 +71,29 @@ class PageController extends Controller
     public function contactPage()
     {
         return Inertia::render('ContactPage');
+    }
+
+    public function categories()
+    {
+        return Inertia::render('Categories');
+    }
+
+    public function advert()
+    {
+        $getadvert = advert::orderBy('id','DESC')->get();
+        return Inertia::render('Advert',['advert'=> $getadvert]);
+    }
+
+    public function shopDash()
+    {
+        return Inertia::render('ShopDash');
+    }
+
+    public function gallery()
+    {
+        $getGallary = gallery::orderBy('id','DESC')->get();
+        return Inertia::render('Gallery',['gallery'=>$getGallary]);
+ 
     }
     
     public function dashboard(Request $request)
@@ -89,4 +126,42 @@ class PageController extends Controller
             ]);
         }
     }
+
+    
+    public function fetch_styles(Request $request)
+    {
+        $getlaceStyle = gallery::where('style','Lace')->orderBy('id','DESC')->limit(5)->get();
+        $getchildrenStyle = gallery::where('style','Children')->orderBy('id','DESC')->limit(5)->get();
+        $getankaraStyle = gallery::where('style', 'Ankara')->orderBy('id','DESC')->limit(5)->get();
+        $gettrend = gallery::where('style', 'Trends')->orderBy('id','DESC')->limit(1)->get();
+        $getmakeover = gallery::where('style', 'Makeover')->orderBy('id', 'DESC')->limit(1)->get();
+        $getgallery = gallery::orderBy('id', 'DESC')->limit(12)->get();
+        $getadvert = advert::orderBy('id', 'DESC')->limit(3)->get();
+        $getasoebiStyle = gallery::where('style', 'Asoebi')->orderBy('id','DESC')->limit(1)->get();
+       
+        
+        return json_encode([
+            'lacestyle' => $getlaceStyle,
+            'childrenStyle' => $getchildrenStyle,
+            'ankaraStyle' => $getankaraStyle,
+            'trend' => $gettrend,
+            'makeOver' => $getmakeover,
+            'gallery' => $getgallery,
+            'advert'  => $getadvert,
+            'asoebiStyle' => $getasoebiStyle
+           
+        ]);
+    }
+
+
+    public function fetch_styles_shop(Request $request)
+    {
+        $getStore = shop::orderBy('id','DESC')->limit(7)->get();
+        
+        return json_encode([
+            'shop' => $getStore
+           
+        ]);
+    }
+
 }

@@ -1,8 +1,8 @@
 <template>
     <div class="header h-12 bg-blue-900 py-3 relative sticky top-0 z-50">
         <div  @click="showSide = !showSide" v-if="showSide" class="fixed z-30 h-screen w-screen bg-black bg-opacity-70 top-0"></div>
-        <span @click="showSide = !showSide" class="absolute top-1 right-4 bg-gray-300 cursor-pointer px-2 py-1 rounded-lg lg:hidden">
-            |||
+        <span @click="showSide = !showSide" class="absolute top-1 right-4 bg-white cursor-pointer px-2 py-1 rounded-lg lg:hidden">
+             <font-awesome :icon="['fas', 'bars']" /> 
         </span>
         <div :class="showSide?'-left-0 lg:left-0':'-left-72 lg:left-0'" class="container transition-all duration-700 bg-blue-900 z-50 fixed lg:relative top-0 w-72 h-screen lg:h-auto lg:w-auto max-w-6xl mx-auto">
             
@@ -17,7 +17,7 @@
 
                     <div @click="dropDown = !dropDown" class=" md:h-auto relative mx-3 inline-block cursor-pointer" :class="navclasses">
                         <div class="relative cursor-pointer lg:-ml-0 -ml-3" :class="navclasses">
-                             <font-awesome :icon="['fas', 'database']" /> Categories 
+                             <font-awesome :icon="['fas', 'layer-group']" /> Categories 
                         </div>
                         <div v-show="dropDown" class="transition-all duration-500 md:absolute static top-10 left-1 bg-blue-700 md:bg-blue-600 shadow-lg rounded-md md:rounded-md  w-40  text-md">
                             <Link :href="route('laceStyle')" class="block py-2 text-md  px-3 hover:text-gray-700 hover:bg-white font-semibold text-gray-100">
