@@ -13,7 +13,7 @@
                             <div class="mb-4">
                                 <label for="" class="mb-3 font-semibold text-gray-900 text-lg">Upload Image</label>
                                 <div class="bg-white rounded-lg py-2 px-2 shadow-lg mt-4">
-                                    <input type="file" @input="image = $event.target.files[0]">
+                                    <input type="file" @input="image = $event.target.files[0]" @change="previewImage">
                                 </div>
                             </div>
                             
@@ -45,11 +45,11 @@
                             </div>
                         </div>
 
-                        <div class="bg-white shadow-md py-3 px-3 rounded-lg">
+                        <div class="">
                             <div class="text-lg text-gray-900 font-semibold mb-3">
                                 Preview Image
                             </div>
-                            
+                                <img :src="preview" alt="No image" class="max-w-full max-h-72 mx-auto">
                             <div>
                                 
                             </div>
@@ -80,6 +80,7 @@
                 image: '',
                 description: '',
                 style: '',
+                preview: '/storage/categories/images/',
             }
         },
 
@@ -107,7 +108,16 @@
                 .catch((ex) => {
                     console.log(ex);
                 })
-            }
+            },
+
+            previewImage(e){
+                let file = e.target.files[0];
+                let reader = new FileReader();
+                reader.onload = (r_ev) => {
+                    this.preview = r_ev.target.result;
+                }
+                reader.readAsDataURL(file);
+            },
         }
     }
 </script>

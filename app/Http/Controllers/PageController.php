@@ -2,14 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
-use App\Models\gallery;
-use App\Models\advert;
 use App\Models\shop;
+use Inertia\Inertia;
+use App\Models\advert;
+use App\Models\gallery;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 class PageController extends Controller
+
 {
+    public function verify_email(Request $request)
+    {
+        if ($request->user()->email_verified_at == null) {
+            return Inertia::render('Auth/VerifyEmail');
+        } else {
+            return redirect()->route('dashboard');
+        }
+    }
+
+    public function resend_email_verify_notice(Request $request)
+    {
+        $request->user()->sendEmailVerificationNotification();
+    
+        return back()->with('status', 'Verification link sent!');
+    }
+
+    public function email_verification(EmailVerificationRequest $request) 
+    {
+        $request->fulfill();
+        return redirect()->route('dashboard');
+    }
+
     public function index()
     {
         $getgallery = gallery::orderBy('id','DESC')->get();
@@ -130,9 +154,9 @@ class PageController extends Controller
     
     public function fetch_styles(Request $request)
     {
-        $getlaceStyle = gallery::where('style','Lace')->orderBy('id','DESC')->limit(5)->get();
+        $getlaceStyle = gallery::where('style','Lace')->orderBy('id','DESC')->limit(1)->get();
         $getchildrenStyle = gallery::where('style','Children')->orderBy('id','DESC')->limit(5)->get();
-        $getankaraStyle = gallery::where('style', 'Ankara')->orderBy('id','DESC')->limit(5)->get();
+        $getankaraStyle = gallery::where('style', 'Ankara')->orderBy('id','DESC')->limit(1)->get();
         $gettrend = gallery::where('style', 'Trends')->orderBy('id','DESC')->limit(1)->get();
         $getmakeover = gallery::where('style', 'Makeover')->orderBy('id', 'DESC')->limit(1)->get();
         $getgallery = gallery::orderBy('id', 'DESC')->limit(12)->get();

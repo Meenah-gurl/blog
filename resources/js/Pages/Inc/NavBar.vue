@@ -1,6 +1,6 @@
 <template>
     <div class="header h-12 bg-blue-900 py-3 relative sticky top-0 z-50">
-        <div  @click="showSide = !showSide" v-if="showSide" class="fixed z-30 h-screen w-screen bg-black bg-opacity-70 top-0"></div>
+        <!-- <div  @click="showSide = !showSide" v-if="showSide" class="fixed z-30 h-screen w-screen bg-black bg-opacity-70 top-0"></div> -->
         <span @click="showSide = !showSide" class="absolute top-1 right-4 bg-white cursor-pointer px-2 py-1 rounded-lg lg:hidden">
              <font-awesome :icon="['fas', 'bars']" /> 
         </span>
@@ -46,13 +46,10 @@
                 </div>
                 
                 <div class="lg:justify-end  gap-y-4 sm:flex-row flex md:flex-col lg:flex-row">
-                    <Link :href="route('home')" :class="navclasses">
-                        <font-awesome :icon="['fab', 'facebook']" /> 
-                    </Link>
-
-                    <Link :href="route('home')" :class="navclasses">
-                        <font-awesome :icon="['fab', 'instagram']" /> 
-                    </Link>
+                    <a :class="navclasses" href="https://www.facebook.com/eze.mimistitches"><font-awesome :icon="['fab', 'facebook']" /> </a>
+    
+                   <a :class="navclasses" href="https://www.facebook.com/eze.mimistitches"><font-awesome :icon="['fab', 'instagram']" /> </a>
+                   
 
                     <Link :href="route('home')" :class="navclasses">
                         <font-awesome :icon="['fab', 'twitter']" /> 

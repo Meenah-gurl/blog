@@ -31,6 +31,8 @@
         "@fortawesome/free-regular-svg-icons": "^5.15.4",
         "@fortawesome/free-solid-svg-icons": "^5.15.4",
         "@fortawesome/vue-fontawesome": "^3.0.0-4",
-        "@splidejs/vue-splide": "^0.5.4"
+        "@splidejs/vue-splide": "^0.5.4",
+        "aos": "^2.3.4",
+        "vue-expandable-image": "^0.1.0"
     }
 }

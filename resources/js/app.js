@@ -30,3 +30,10 @@ createInertiaApp({
 });
 
 InertiaProgress.init({ color: '#4B5563' });
+
+
+// Imported and Initialized Animation on scroll
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+// initailized
+AOS.init();

@@ -7,8 +7,8 @@
         <div class="mt-7 mx-auto py-7 max-w-6xl">
           <Splide :options="options1">
             <SplideSlide v-for="(SalesItem, i) in shop" :key="i">
-                <div class="items-center mb-9">
-                    <img :src="'/storage/shop/images/' + SalesItem.image" alt="Sample 1" class="imgs w-full h-80" />
+                <div class="items-center mb-3">
+                    <img :src="'/storage/shop/images/' + SalesItem.image" alt="Sample 1" class="imgs w-full h-72" />
                 </div>
                 <div class="text-white font-san text-center block">
                     <span class="block">{{ SalesItem.description }}</span>
@@ -16,6 +16,10 @@
                 </div>
             </SplideSlide>
         </Splide>
+        </div>
+
+        <div class="text-right mt-5">
+            <a href="tel:+234 9034364675" class="bg-blue-600 text-white py-2 shadow-md rounded-md px-2">Place a call to Order</a>
         </div>
     </div>
 </template>

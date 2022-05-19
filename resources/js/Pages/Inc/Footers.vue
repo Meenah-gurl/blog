@@ -8,42 +8,44 @@
                         <h3 class="text-md font-semibold mb-4 uppercase">Mimi Stiches</h3>
                         <hr class="w-10 border-blue-600 mt-3">
                     </div>
-                    <p class="text-lg text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, accusantium reprehenderit</p>
+                    <p class="text-lg lg:text-justify md:w-lg text-start">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, accusantium</p>
                 </div>
                 <!-- second grid -->
                 <div>
-                    <div class="flex gap-4">
-                        <h3 class="text-md font-semibold mb-4 uppercase">trending Post</h3>
+                    <div class="flex gap-3">
+                        <h3 class="lg:text-md text-md font-semibold mb-4 uppercase">trending</h3>
                         <hr class="w-10 border-blue-600 mt-3">
                     </div>
 
                     <div class="flex gap-3 mb-3">
-                        <div class="hover:border-blue-600 hover:border">
-                            <img src="/imgs/mimi 3.jpg" alt="No image" class="h-20 w-20 rounded-md">
+                        <div class="hover:border-blue-600 hover:border" v-for="(trendItem, i) in trend" :key="i">
+                            <div class="flex items-center">
+                                <img :src="'/storage/categories/images/' + trendItem.image" alt="No image" class="h-20 w-20 rounded-md">
+                            </div>
                         </div>
-                        <div>
-                            <p class="text-sm font-semibold mb-2 mt-3">Beautiful Ankara Style</p>
-                            <small class="text-sm">25 November, 2021</small>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-3 mb-3">
-                        <div class="hover:border-blue-600 hover:border">
-                            <img src="/imgs/mina.jpg" alt="No image" class="h-20 w-20 rounded-md">
-                        </div>
-                        <div>
-                            <p class="text-sm font-semibold mb-2 mt-3">Perfect Asoebi Style</p>
-                            <small class="text-sm">25 November, 2021</small>
+                        <div class="hidden lg:block">
+                            <p class="text-sm font-semibold lg:mb-2 mb-0 lg:mt-3 md:mt-1">Beautiful Ankara Style</p>
+                            <small class="lg:text-sm text-xs max-w-lg">25 November, 2021</small>
                         </div>
                     </div>
 
-                    <div class="flex gap-3">
-                        <div class="hover:border-blue-600 hover:border">
-                            <img src="/imgs/mimi 3.jpg" alt="No image" class="h-20 w-20 rounded-md">
+                    <div class="flex gap-3 mb-3 g:flex md:flex-row">
+                        <div class="hover:border-blue-600 hover:border" v-for="(trendItem, i) in trend" :key="i">
+                            <img :src="'/storage/categories/images/' + trendItem.image"  alt="No image" class="h-20 w-20 rounded-md">
                         </div>
-                        <div>
-                            <p class="text-sm font-semibold mb-2 mt-3">Beautiful Ankara Style</p>
-                            <small class="text-sm">25 November, 2021</small>
+                        <div class="hidden lg:block">
+                            <p class="text-sm font-semibold lg:mb-2 mb-0 lg:mt-3 md:mt-1">Perfect Asoebi Style</p>
+                            <small class="lg:text-sm text-xs max-w-lg">25 November, 2021</small>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-3 g:flex md:flex-row">
+                        <div class="hover:border-blue-600 hover:border" v-for="(trendItem, i) in trend" :key="i">
+                            <img :src="'/storage/categories/images/' + trendItem.image"  alt="No image" class="h-20 w-20 rounded-md">
+                        </div>
+                        <div class="hidden lg:block">
+                            <p class="text-sm font-semibold lg:mb-2 mb-0 lg:mt-3 md:mt-1">Beautiful Ankara Style</p>
+                            <small class="lg:text-sm text-xs max-w-lg">25 November, 2021</small>
                         </div>
                     </div>
                 </div>
@@ -54,37 +56,37 @@
                         <hr class="w-10 border-blue-600 mt-3">
                     </div>
 
-                    <div class="flex gap-3 mb-3">
+                    <div class="flex gap-3 mb-3 g:flex md:flex-row">
                         <div class="hover:border-blue-600 hover:border">
                             <img src="/imgs/shortgown.jpg" alt="No image" class="h-20 w-20 rounded-md">
                         </div>
-                        <div>
-                            <p class="text-sm font-semibold mb-2 mt-3">Beautiful Ankara Style</p>
-                            <small class="text-sm">25 November, 2021</small>
+                        <div class="hidden lg:block">
+                            <p class="text-sm font-semibold lg:mb-2 mb-0 lg:mt-3 md:mt-1">Beautiful Ankara Style</p>
+                            <small class="lg:text-sm text-xs max-w-lg">25 November, 2021</small>
                         </div>
                     </div>
 
-                    <div class="flex gap-3 mb-3">
+                    <div class="flex gap-3 mb-3 g:flex md:flex-row">
                         <div class="hover:border-blue-600 hover:border">
                             <img src="/imgs/shortgown.jpg" alt="No image" class="h-20 w-20 rounded-md">
                         </div>
-                        <div>
-                            <p class="text-sm font-semibold mb-2 mt-3">Beautiful Ankara Style</p>
-                            <small class="text-sm">25 November, 2021</small>
+                        <div class="hidden lg:block">
+                            <p class="text-sm font-semibold lg:mb-2 mb-0 lg:mt-3 md:mt-1">Beautiful Ankara Style</p>
+                            <small class="lg:text-sm text-xs max-w-lg">25 November, 2021</small>
                         </div>
                     </div>
 
-                    <div class="flex gap-3 mb-3">
+                    <div class="flex gap-3 mb-3 g:flex md:flex-row">
                         <div class="hover:border-blue-600 hover:border">
                             <img src="/imgs/shortgown.jpg" alt="No image" class="h-20 w-20 rounded-md">
                         </div>
-                        <div>
-                            <p class="text-sm font-semibold mb-2 mt-3">Beautiful Ankara Style</p>
-                            <small class="text-sm">25 November, 2021</small>
+                        <div class="hidden lg:block">
+                            <p class="text-sm font-semibold lg:mb-2 mb-0 lg:mt-3 md:mt-1">Beautiful Ankara Style</p>
+                            <small class="lg:text-sm text-xs max-w-lg">25 November, 2021</small>
                         </div>
                     </div>
                 </div>
-                <!-- fourt grid -->
+                <!-- fourth grid -->
                 <div>
                     <div class="flex gap-4">
                         <h3 class="text-md font-semibold mb-4 uppercase lg:flex-grow lg:flex-shrink-0">subscribe and follow</h3>
@@ -132,6 +134,12 @@ export default {
 
     props:{
          gallery_home:Array,
+    },
+
+    data(){
+        return{
+            trend: [],
+        }
     },
 
      beforeMount() {

@@ -7,6 +7,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TestController;
 use Illuminate\Routing\Route as RoutingRoute;
+use App\Http\Controllers\Contact_usController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,10 @@ use Illuminate\Routing\Route as RoutingRoute;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::post('/email/verification-notification', [PageController::class, 'resend_email_verify_notice'])->middleware(['auth:sanctum', 'throttle:6,1'])->name('verification.send');
+Route::get('/email/verify/{id}/{hash}', [PageController::class, 'email_verification'])->middleware(['auth', 'signed'])->name('verification.verify');
+
 Route::get('/', [PageController::class, 'index'])->name('home');
 Route::get('/trending', [PageController::class, 'trend'])->name('trending');
 Route::get('/laceStyle', [PageController::class, 'laceStyle'])->name('laceStyle');
@@ -31,6 +36,8 @@ Route::get('/aboutPage', [PageController::class, 'aboutPage'])->name('aboutPage'
 Route::post('fetch_styles', [PageController::class, 'fetch_styles'])->name('fetch_styles');
 Route::post('fetch_styles_shop', [pageController::class, 'fetch_styles_shop'])->name('fetch_styles_shop');
 
+Route::get('add_contact_us', [Contact_usController::class,'add_contact_us'])->name('add_contact_us');
+
 
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
@@ -39,6 +46,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/gallery', [PageController::class, 'gallery'])->name('gallery');
     Route::get('/advert', [PageController::class, 'advert'])->name('advert');
     Route::get('/shopDash', [PageController::class, 'shopDash'])->name('shopDash');
+    Route::get('/notification', [PageController::class, 'notification'])->name('notification');
     
     
 

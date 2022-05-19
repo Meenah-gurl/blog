@@ -3,7 +3,7 @@
         <div class="max-w-6xl mx-auto px-3">
             <div class="grid md:grid-cols-3 grid-cols-1 gap-10">
                 <div class="col-span-2 ">
-                    <div class="grid md:grid-cols-2 grid-cols-1 gap-5">
+                    <div class="grid md:grid-cols-2 grid-cols-1 gap-5" data-aos="fade-down" data-aos-duration="700">
                         <div class="order-2 lg:order-1" v-for="(itemtrend, i) in trend" :key="i">
                            <div class="md:max-h-52 max-h-60 overflow-hidden items-center rounded-md">
                                 <img :src="'/storage/categories/images/' + itemtrend.image"  alt="" class="rounded-md">
@@ -16,9 +16,9 @@
                             </Link>
                             
                             <div>
-                                <h3 class="capitalize text-black font-san text-2xl font-bold mt-3">How she became a Millionaire at a young age</h3>
-                                <small class="text-gray-700 mb-2">by Meenah Sani, on October, 2021</small>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit adipisicing elit.</p>
+                                <h3 class="capitalize text-black font-san text-2xl font-bold mb-4 mt-3">stay busy with our amazing trends</h3>
+                                
+                                <p>We keep you occupied by just exploring our lastest trends.</p>
                                 <button class="mt-4 py-1 px-4 bg-white text-black border-2 border-black hover:bg-black hover:text-white ">See more</button>
                             </div>
                         </div>
@@ -26,7 +26,7 @@
                      <hr class="bg-gray-600 mt-12 mb-4">
 
                      <!-- second row -->
-                    <div class="grid md:grid-cols-2 grid-cols-1 gap-5 mt-8">
+                    <div class="grid md:grid-cols-2 grid-cols-1 gap-5 mt-8" data-aos="fade-up" data-aos-duration="700">
                         <div class="order-2 lg:order-1" v-for="(itemMakeover, i) in makeOver" :key="i">
                             <div class="md:max-h-52 max-h-60 overflow-hidden rounded-md">
                                 <img :src="'/storage/categories/images/' + itemMakeover.image"  alt="">
@@ -35,7 +35,7 @@
 
                         <div class="order-1 px-3 lg:order-2">
                             <Link :href="route('trending')" class="cursor-pointer">
-                                <span class="bg-gray-300 text-black py-1 px-2 font-sans text-sm font-extrabold uppercase ml-3">TRENDS</span>
+                                <span class="bg-gray-300 text-black py-1 px-2 font-sans text-sm font-extrabold uppercase">TRENDS</span>
                             </Link>
 
                             <Link :href="route('hairStyle')" class="cursor-pointer">
@@ -45,9 +45,9 @@
                                 <span class="bg-gray-300 text-black py-1 px-2 font-sans text-sm font-extrabold uppercase ml-3">MAKE OVER</span>
                             </Link>    
                             <div>
-                                <h3 class="capitalize text-black font-san text-2xl font-bold mt-3">How she became a Millionaire at a young age</h3>
-                                <small class="text-gray-700 mb-2">by Meenah Sani, on October, 2021</small>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit adipisicing elit.</p>
+                                <h3 class="capitalize text-black font-san text-2xl font-bold mt-3 mb-4">Check out our beautiful designs</h3>
+                             
+                                <p>We give you mind blowing trends, hairStyle and Make up.</p>
                                 <button class="mt-4 py-1 px-4 bg-white text-black border-2 border-black hover:bg-black hover:text-white ">See more</button>
                             </div>
                         </div>
@@ -55,8 +55,8 @@
                     <hr class="bg-gray-600 mt-12 mb-4">
 
                     <!-- third row -->
-                    <div class="grid md:grid-cols-4  grid-cols-2 gap-3">
-                        <div class="" v-for="(gallery, i) in gallery_home" :key="i">
+                    <div class=" grid md:grid-cols-4  grid-cols-2 gap-3" data-aos="zoom-out" data-aos-duration="700">
+                        <div class="grid-gallery" v-for="(gallery, i) in gallery_home" :key="i">
                             <div>
                                 <img :src="'/storage/categories/images/' + gallery.image"  alt="" class="rounded-lg w-40 mx-auto">
                             </div>
@@ -66,7 +66,7 @@
                 </div>
 
 
-                <div class="lg:col-span-1 col-span-2 mx-auto w-full">
+                <div class="lg:col-span-1 col-span-2 mx-auto w-full" data-aos="flip-left" data-aos-duration="700">
                     <div class="relative border border-gray-400  py-3 lg:w-full w-full">
                         <div class="absolute left-8  right-0 -top-7 px-4 py-3 bg-gray-300 w-72 text-center shadow-lg hover:bg-white hover:text-gray-700 cursor-pointer">
                             <span class="text-black font-bold uppercase ">About Me</span>
@@ -85,9 +85,9 @@
                         </div>
 
                         <div class="sm:flex-row flex md:flex-col lg:flex-row">
-                            <Link :href="route('home')" :class="navclasses">
+                            <a href="https://www.facebook.com/eze.mimistitches" :class="navclasses">
                                 <font-awesome :icon="['fab', 'facebook']" /> 
-                            </Link>
+                            </a>
 
                             <Link :href="route('home')" :class="navclasses">
                                 <font-awesome :icon="['fab', 'instagram']" /> 
@@ -103,7 +103,7 @@
                         </div>
                     </div>
 
-                    <div class="mx-auto lg:mx-0">
+                    <div class="mx-auto lg:mx-0" data-aos="" data-aos-duration="700">
                         <div class="bg-gray-300 px-3 py-3 text-center mt-5 shadow-lg hover:bg-white hover:text-gray-700 cursor-pointer" >
                             <span class="uppercase text-black font-bold font-san text-lg">categories</span>
                         </div>
@@ -310,3 +310,13 @@ export default {
 }
 </script>
 
+
+<style scoped>
+    .grid-gallery img {
+        /* border-radius: 4px; */
+        height: auto;
+        width: 100%;
+        position: relative;
+        display: block;
+    }
+</style>

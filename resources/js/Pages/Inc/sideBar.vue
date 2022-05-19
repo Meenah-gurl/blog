@@ -43,11 +43,18 @@
                   <span class="inline-block align-middle text-gray-600 font-medium">Shop</span>
                 </Link>
               </li>
+
+              <li>
+                <Link class="px-4 py-2 block border-b border-gray-200 hover:bg-blue-100 hover:shadow-inner rounded" :href="route('notification')">
+                  <font-awesome icon="bell" class="text-blue-700 hover:text-blue-800 mr-3 inline-block align-middle"/>
+                  <span class="inline-block align-middle text-gray-600 font-medium">Notification</span>
+                </Link>
+              </li>
             </ul>
           </div>
 
           <!--User profile-->
-          <div class="py-12 px-2 rounded-2xl mt-12 bg-blue-100 shadow-2xl h-60 relative bottom-6">
+          <div class="py-12 px-2 rounded-2xl mt-14 bg-blue-100 shadow-2xl h-60 relative bottom-12">
             <div class="rounded-full bg-white w-16 h-16 mx-auto text-center">
               <!-- <img :src="user.profile_photo_path" alt class="rounded-full w-16 h-16" /> -->
             </div>

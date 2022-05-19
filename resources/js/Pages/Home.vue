@@ -6,63 +6,67 @@
       <h1 class="font-sans italic font-extrabold text-5xl text-black">Mimi Stiches</h1>
     </div>
 
-    <!-- <div id="banner" class="w-full mt-8 h-72">
-      <div class="grid grid-cols-3">
-        <div class="col-span-2">
+    <div id="banner" class="w-full mt-8">
+      <div class="grid md:grid-cols-3 grid-cols-1">
+        <div class="col-span-2 bg-white shadow-lg py-10 px-3">
+         <div data-aos="fade-down" data-aos-duration="" class="flex justify-center items-start">
+           <span class="flex-col justify-items-center items-center">
+              <h2 class="text-7xl font-bold mb-3 text-center"> @ </h2>
+              <h2 class="md:text-3xl text-xl font-semibold text-center max-w-lg">Mimi Stiches <span>we turn your fabrics into beautiful pieces of unimaginary styles</span></h2>
+           </span>
+         </div>
+        </div>
+
+        <div  class="col-span-1 shadow-lg">
           <Splide :options="options">
             <SplideSlide v-for="(slideImg, i) in gallery_home" :key="i">
-              <div class="max-h-96 flex items-center">
+              <div class="max-h-96 max-w-screen-lg flex items-center" >
                 <img :src="'/storage/categories/images/' + slideImg.image" alt="Sample 1" class="imgs w-full" />
               </div>
             </SplideSlide>
           </Splide>
         </div>
-
-        <div  class="bg-blue-700 col-span-1">
-
-        </div>
       </div>
-     
-    </div> -->
+    </div>
 
     <div class="max-w-6xl mx-auto px-2 py-2 mt-8">
       <div class="grid md:grid-cols-3 gap-5 grid-cols-1 px-2">
-
-          <div class="relative text-center" v-for="(itemAnkara, i) in ankarastyle" :key="i">
-            <div class="md:max-h-96 max-h-96 overflow-hidden items-center rounded-md flex">
+        <div class="relative text-center rounded-md" v-for="(itemAnkara, i) in ankarastyle" :key="i">
+            <div class="md:max-h-96 max-h-96 overflow-hidden items-center rounded-md flex" data-aos="zoom-out" data-aos-duration="">
               <img :src="'/storage/categories/images/' + itemAnkara.image"  alt="" class="rounded-md">
             </div>
-             <div class="absolute top-36 left-0 right-0  font-san rounded-md bg-white text-center text-gray-900 py-4  w-44 mx-auto hover:animate-bounce duration-150 hover:bg-blue-600 hover:text-white">
-               <Link :href="route('ankaraStyle')" class="">
-                  <span> Ankara Styles</span>
-                </Link>
-             </div>
-          </div>
 
-          <div class="relative text-center" v-for="(itemAsoebi, i) in asoebiStyle" :key="i">
-              <div class="md:max-h-96 max-h-96 overflow-hidden items-center rounded-md">
-                <img :src="'/storage/categories/images/' + itemAsoebi.image"  alt="" class="rounded-md flex">
-              </div>
-              <div class="absolute top-36 left-0 right-0  font-san rounded-md bg-white text-center text-gray-900 py-4  w-44 mx-auto hover:animate-bounce duration-150 hover:bg-blue-600 hover:text-white">
-               <Link :href="route('asoebiStyle')" class="">
-                  <span>Asoebi Styles</span>
-                </Link>
-              </div>
-          </div>
-
-          <div class="relative text-center rounded-md" v-for="(itemLace, i) in lacestyle" :key="i" >
-            <div class="md:max-h-96 max-h-96 overflow-hidden items-center rounded-md flex">
-               <img :src="'/storage/categories/images/' + itemLace.image"  alt="" class="rounded-md">
+            <div class="absolute top-36 left-0 right-0  font-san rounded-md bg-white text-center text-gray-900 py-4  w-44 mx-auto hover:animate-bounce duration-150 hover:bg-blue-600 hover:text-white">
+              <Link :href="route('ankaraStyle')" class="">
+                <span> Ankara Styles</span>
+              </Link>
             </div>
-              <div class="absolute top-36 left-0 right-0 font-san rounded-md bg-white text-center text-gray-900 py-4  w-44 mx-auto hover:animate-bounce duration-150 hover:bg-blue-600 hover:text-white">
-                <Link :href="route('laceStyle')" class="">
-                  <span>Lace Styles</span>
-                </Link>
-              </div>
+        </div>
+
+        <div class="relative text-center" v-for="(itemAsoebi, i) in asoebiStyle" :key="i">
+            <div class="md:max-h-96 max-h-96 overflow-hidden items-center rounded-md flex" data-aos="zoom-out" data-aos-duration="">
+              <img :src="'/storage/categories/images/' + itemAsoebi.image"  alt="" class="rounded-md flex">
+            </div>
+            <div class="absolute top-36 left-0 right-0  font-san rounded-md bg-white text-center text-gray-900 py-4  w-44 mx-auto hover:animate-bounce duration-150 hover:bg-blue-600 hover:text-white">
+              <Link :href="route('asoebiStyle')" class="">
+                <span>Asoebi Styles</span>
+              </Link>
+            </div>
+        </div>
+
+        <div class="relative text-center rounded-md" v-for="(itemLace, i) in lacestyle" :key="i" >
+          <div class="md:max-h-96 max-h-96 overflow-hidden items-center rounded-md flex" data-aos="zoom-out" data-aos-duration="">
+              <img :src="'/storage/categories/images/' + itemLace.image"  alt="" class="rounded-md">
           </div>
+          <div class="absolute top-36 left-0 right-0 font-san rounded-md bg-white text-center text-gray-900 py-4  w-44 mx-auto hover:animate-bounce duration-150 hover:bg-blue-600 hover:text-white">
+            <Link :href="route('laceStyle')" class="">
+              <span>Lace Styles</span>
+            </Link> 
+          </div>
+        </div>
       </div>
 
-     <div class="bg-blue-100 mt-7 mx-auto py-20 rounded-md px-5">
+     <div class="bg-blue-100 mt-7 mx-auto py-20 rounded-md px-5" data-aos="fade-down" data-aos-duration="700">
         <div class="text-center">
           <h4 class="text-2xl font-extrabold font-sans text-gray-600">Newsletter</h4>
           <p class="text-gray-600">Sign up to get weekly emails with new updates in your inbox.</p>
